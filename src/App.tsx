@@ -115,14 +115,13 @@ export default function App() {
                             </div>
                         </address>
 
-                        {/* Declaración de Copyright estándar */}
                         <div className="mt-6 text-xs text-slate-400">
                             &copy; {new Date().getFullYear()} Jesús Céspedes.
                         </div>
                     </div>
                 </section>
 
-                <section className="lg:col-span-8">
+                <section className="lg:col-span-8 min-w-0">
                     <ResultDisplay
                         contenedor={contenedorActivo}
                         anchoImg={config.anchoImg}
