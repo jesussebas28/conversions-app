@@ -13,7 +13,7 @@ Una herramienta de cálculo de imposición y distribución de piezas sobre plieg
 
 ### clonar proyecto
 ```bash
-git clone https://github.com/jesussebas28/conversions-app.git;
+git clone https://github.com/jesussebas28/conversions-app.git
 cd conversions-app
 ```
 
