@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+
 type Props = {
     wContenedor: number;
     hContenedor: number;
@@ -6,6 +8,7 @@ type Props = {
     cols: number;
     rows: number;
 };
+
 export default function VisualCanvas({
     wContenedor,
     hContenedor,
@@ -14,13 +17,29 @@ export default function VisualCanvas({
     cols,
     rows,
 }: Props) {
-    const escala = 12;
+    const [escala, setEscala] = useState(12);
+
+    useEffect(() => {
+        const adaptarEscala = () => {
+            if (window.innerWidth < 768) {
+                setEscala(8);
+            } else {
+                setEscala(12);
+            }
+        };
+
+        adaptarEscala();
+
+        window.addEventListener("resize", adaptarEscala);
+
+        return () => window.removeEventListener("resize", adaptarEscala);
+    }, []);
 
     return (
-        <div className="w-full overflow-x-auto bg-slate-50 p-4 md:p-8 rounded-xl">
+        <div className="w-full overflow-x-auto  bg-slate-50 p-4 md:p-8 rounded-xl">
             <div className="w-max mx-auto">
                 <div
-                    className="relative bg-white shadow-2xl border-2 border-slate-400 transition-all duration-300"
+                    className="relative bg-white border-2 border-slate-400 transition-all duration-300"
                     style={{
                         width: `${wContenedor * escala}px`,
                         height: `${hContenedor * escala}px`,
